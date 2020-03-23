@@ -36,7 +36,7 @@ Client :
 * rememberToken()
 * timestamps()
 
-* ipAddress('visitor')->nullable
+* ipAddress('visitor_ip')->nullable
 * float('latitude', 8, 3)->nullable
 * float('longitude', 8, 3)->nullable
 * integer('accuracy')->nullable
@@ -57,6 +57,41 @@ Voir *http://127.0.0.1:8000/login* et *http://127.0.0.1:8000/register*
 *config/auth.ph* **config file**
 
 
+### Workflow
+___________________________________
+
+Once user is connected via register or login, (ckeck authentification part, database and migrations), we will redirect to a profile vue to store some new data informations.
+
+To this let's code some controlers snippets
+
+#### HomeControler
+
+[Path Customization](https://laravel.com/docs/7.x/authentication#path)   
+
+> When a user is successfully authenticated, they will be redirected to the /home URI. You can customize the post-authentication redirect path using the HOME constant defined in your RouteServiceProvider:
+
+```php
+public const HOME = '/home';
+```
+
+
+> If you need more robust customization of the response returned when a user is authenticated, Laravel provides an empty authenticated(Request $request, $user) method that may be overwritten if desired:
+
+```php
+/**
+ * The user has been authenticated.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  mixed  $user
+ * @return mixed
+ */
+protected function authenticated(Request $request, $user)
+{
+    return response([
+        //
+    ]);
+}
+```
 
 
 
@@ -67,8 +102,11 @@ Voir *http://127.0.0.1:8000/login* et *http://127.0.0.1:8000/register*
 ## Commands
 
 **Launch Serve**
-`php artisan serve [--port=]`
+`$ php artisan serve [--port=]`
 
+
+**Display route list**
+`$ php artisan route:list`
 
 
 ## Database
@@ -116,7 +154,18 @@ class UsersAddTraitsTagsGeoloc extends Migration
     }
 ```
 
-* 
+* ipAddress('visitor_ip')->nullable
+* float('latitude', 8, 3)->nullable
+* float('longitude', 8, 3)->nullable
+* integer('accuracy')->nullable
+* json('profile')->nullable
+
+
+
+### Queries Builder
+__________________________________
+[How Laravel communicate with DB](https://laravel.com/docs/7.x/queries)
+
 
 
 
