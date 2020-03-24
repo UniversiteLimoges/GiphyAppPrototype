@@ -11,9 +11,13 @@ class HomeController extends Controller
      *
      * @return void
      */
+
+    protected $has_information;
+
     public function __construct()
     {
         $this->middleware('auth');
+        
     }
 
     /**

@@ -12,7 +12,7 @@ _HackerNoon Ressource_
 
 
 ## Architecture
-### Geoloation System (Front)
+### Geolocation System (Front)
 ________________________
 [Mozilla Doc](https://developer.mozilla.org/fr/docs/Web/API/Geolocation/getCurrentPosition)
 
@@ -74,7 +74,6 @@ To this let's code some controlers snippets
 public const HOME = '/home';
 ```
 
-
 > If you need more robust customization of the response returned when a user is authenticated, Laravel provides an empty authenticated(Request $request, $user) method that may be overwritten if desired:
 
 ```php
@@ -93,9 +92,15 @@ protected function authenticated(Request $request, $user)
 }
 ```
 
+We will stay with '/home' default redirection : 
+* controller : _/app/Http/Controllers/HomeController.php_
+* vue : _/ressources/views/home.blade.php_ based on _/views/layouts/app.blade.php_
 
+#### Add Middleware
 
+`php artisan make:middleware <name>`
 
+We add middleware which will add IP address to user database field.
 
 
 
