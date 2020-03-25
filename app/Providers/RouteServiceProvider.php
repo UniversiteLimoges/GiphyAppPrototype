@@ -22,21 +22,6 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
-<<<<<<< HEAD
-    
-    /**
-     * The user has been authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
-     */
-    protected function authenticated(Request $request, $user)
-    {   
-        return response('hello world');
-    }
-=======
->>>>>>> d0562c1ee71b511d31296e30ae29ef37f3ba08a3
 
     /**
      * Define your route model bindings, pattern filters, etc.

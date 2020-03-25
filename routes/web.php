@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
 
 Auth::routes();
 
@@ -30,5 +29,4 @@ Route::get('/modifyTest', 'TestController@modifyTest');
 Route::get('/modifyTestForm/{id}', 'TestController@modifyTestForm');
 
 Route::post('/applyModify/{id}', 'TestController@applyModify');
-=======
->>>>>>> d0562c1ee71b511d31296e30ae29ef37f3ba08a3
+
