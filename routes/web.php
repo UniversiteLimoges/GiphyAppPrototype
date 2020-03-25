@@ -26,3 +26,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Test Branch
 Route::get('/test', 'TestController@viewTest')->name('test');
 Route::get('/modifyTest', 'TestController@modifyTest');
+Route::get('/modifyTestForm/{id}', 'TestController@modifyTestForm');
+
+Route::post('/applyModify/{id}', 'TestController@applyModify');
