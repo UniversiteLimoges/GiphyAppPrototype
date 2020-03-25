@@ -1,0 +1,16 @@
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100vw;
+    height: 60px;
+    background-color: $dark-grey;
+    position: fixed;
+    bottom: 0;
+
+    &__back {
+    height:100%;
+    width: auto;
+    }
+}
+
