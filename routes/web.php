@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', 'TestController@viewTest');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+// Test Branch
+Route::get('/test', 'TestController@viewTest')->name('test');
+Route::get('/modifyTest', 'TestController@modifyTest');

@@ -27,4 +27,13 @@ class TestController extends Controller
     		'names' => $this->users_name,
     	]);
     }
+
+    public function modifyTest()
+    {
+    	$user = User::where('name', 'Quentin')->first();
+    	$user->name = 'Solid';
+    	$user->save();
+
+    	return redirect()->route('test');
+    }
 }
