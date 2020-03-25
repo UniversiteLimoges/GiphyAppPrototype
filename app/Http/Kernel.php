@@ -52,7 +52,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+<<<<<<< HEAD
         'giphy.user.init.data' => App\Http\Middleware\GiphyUserInit::class,
+=======
+>>>>>>> d0562c1ee71b511d31296e30ae29ef37f3ba08a3
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
