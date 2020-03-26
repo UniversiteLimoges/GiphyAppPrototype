@@ -285,4 +285,14 @@ Routes
 * /favs == @index => fav.indexFav (show all favs tag)
 * /favs/create == @create => addFormFav (send new tag)
     * redirect to POST:/favs == @store (add new tag in db)
+* /favs/{Fav} == @delete => @index
 
+```HTML
+<li>#{{ $fav->name }}
+        <form method="POST" action="{{ route('favs.destroy', ['fav' => $fav]) }}">
+            @csrf
+            @method('DELETE')
+            <input type="submit" value="delete">
+        </form>
+</li>
+```
