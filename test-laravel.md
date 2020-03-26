@@ -296,3 +296,11 @@ Routes
         </form>
 </li>
 ```
+
+
+## User Workflow 
+
+Login :
+
+* /home 
+* display menu profil

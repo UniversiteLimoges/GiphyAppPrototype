@@ -26,6 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Fav
 Route::resource('favs', 'FavController');
 
+// User
+Route::resource('user', 'UserController')->only([
+	'index', 'edit', 'update'
+]);
 
 
 // Test Branch

@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Fav;
+use App\User;
 use Illuminate\Http\Request;
 
-class FavController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $favs = Fav::all();
+        $current_user = $request->user();
 
-        return view('fav.indexFav', [
-            'favs' => $favs,
+        return view('user.index', [
+            'current_user' => $current_user,
         ]);
     }
 
@@ -28,7 +28,7 @@ class FavController extends Controller
      */
     public function create()
     {
-        return view('fav.addFormFav');
+        //
     }
 
     /**
@@ -39,58 +39,58 @@ class FavController extends Controller
      */
     public function store(Request $request)
     {
-        $fav = new Fav;
-        $fav->name = $request->input('tag-name');
-        $fav->save();
-
-        return redirect()->route('favs.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Fav  $fav
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Fav $fav)
+    public function show(User $user)
     {
-        // will return view which display all user linked to this $fav Tag
-        return redirect()->route('favs.index');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Fav  $fav
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fav $fav)
+    public function edit(User $user)
     {
-        //
+        return view('user.edit', [
+            'current_user' => $user,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Fav  $fav
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fav $fav)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->email = $request->input('email');
+        $user->name = $request->input('name');
+
+        $user->save();
+
+        return redirect()->route('user.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Fav  $fav
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fav $fav)
+    public function destroy(User $user)
     {
-        $fav->delete();
-
-        return redirect()->route('favs.index');
+        //
     }
 }

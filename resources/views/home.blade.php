@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <h1> Welcome {{ $current_user->name }}</h1>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
@@ -15,6 +16,12 @@
                     @endif
 
                     You are logged in!
+                </div>
+                <div class="card-footer">
+                    <p> Please update your profile before use Giphy ! </p>
+                        <a href="{{ route('user.edit', ['user' => $current_user]) }}">
+                        <button type="button" class="btn btn-primary btn-lg btn-block">Go to Profile</button>
+                    </a>
                 </div>
             </div>
         </div>
