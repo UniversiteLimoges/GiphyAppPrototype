@@ -6,7 +6,13 @@
 
 	<ul>
 		@foreach($favs as $fav)
-		<li>#{{ $fav->name }}</li>
+		<li>#{{ $fav->name }}
+		<form method="POST" action="{{ route('favs.destroy', ['fav' => $fav]) }}">
+			@csrf
+			@method('DELETE')
+			<input type="submit" value="delete">
+		</form>
+		</li>
 		@endforeach
 	</ul>
 </div>

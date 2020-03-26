@@ -54,7 +54,8 @@ class FavController extends Controller
      */
     public function show(Fav $fav)
     {
-        //
+
+        return redirect()->route('favs.index');
     }
 
     /**
@@ -88,6 +89,8 @@ class FavController extends Controller
      */
     public function destroy(Fav $fav)
     {
-        //
+        $fav->delete();
+
+        return redirect()->route('favs.index');
     }
 }
