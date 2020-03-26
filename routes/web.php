@@ -23,6 +23,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+// Fav
+Route::resource('favs', 'FavController');
+
+
+
 // Test Branch
 Route::get('/test', 'TestController@viewTest')->name('test');
 Route::get('/modifyTest', 'TestController@modifyTest');

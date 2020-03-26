@@ -137,7 +137,7 @@ __________________________________
 
 located in : _/database/migrations/_
 
-`$ php artisan make:migration <name> --table=<table-name> `
+`$ php artisan make:migration <name> --[table | create]=<table-name> `
 
 
 #### Add fields 
@@ -165,6 +165,17 @@ class UsersAddTraitsTagsGeoloc extends Migration
 * integer('accuracy')->nullable
 * json('profile')->nullable
 
+#### Modify Column
+Make new migrations
+
+``` php
+public function up()
+{
+    Schema::table('Favs', function (Blueprint $table) {
+        $table->string('name')->nullable->change();
+    });
+}
+```
 
 
 ### Queries Builder
@@ -211,10 +222,67 @@ ____________________________________
 
 
 
-### Migration
 
-See file _database/migrations_
 
-`php artisan migrate`
 
+
+
+
+
+
+## Admin Pannel
+
+Intsance of auth user
+```php
+public function update(Request $request)
+{
+    // $request->user() returns an instance of the authenticated user...
+}
+```
+
+
+Middleware CheckRole
+```php
+namespace App\Http\Middleware;
+
+use Closure;
+
+class CheckRole
+{
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string  $role
+     * @return mixed
+     */
+    public function handle($request, Closure $next, $role)
+    {
+        if (! $request->user()->hasRole($role)) {
+            // Redirect...
+        }
+
+        return $next($request);
+    }
+
+```
+
+Route Middleware Parameters
+```php
+Route::put('post/{id}', function ($id) {
+    //
+})->middleware('role:editor');
+```
+
+
+## CRUD controller ressource Fav
+`php artisan make:controller PhotoController --resource --model=Fav `
+
+Routes
+`Route::resource('favs', 'FavController');`
+
+* /favs == @index => fav.indexFav (show all favs tag)
+* /favs/create == @create => addFormFav (send new tag)
+    * redirect to POST:/favs == @store (add new tag in db)
 
