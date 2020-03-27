@@ -305,7 +305,21 @@ Routes
 * `$ composer require torann/geoip`
 
 * Add Provider & Alias in _config/app.php_
+    * ```
+    'providers' => [
+    \Torann\GeoIP\GeoIPServiceProvider::class,
+    ]
+    ...
+    ...
+    'aliases' => [
+    'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+    ];
+    ```
 
 * `$ php artisan vendor:publish --provider="Torann\GeoIP\GeoIPServiceProvider" --tag=config` Compile _config/geoip.php_ file
 
- 
+* need to modify _.env_ : CACHE_DRIVER=array instead of CACHE_DRIVER=file
+
+* need to get php-curl :
+    * `$ sudo apt-get php-curl`
+    * `$ sudo service apache2 restart`
