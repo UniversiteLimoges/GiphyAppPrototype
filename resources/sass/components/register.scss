@@ -1,0 +1,30 @@
+@import "../variables";
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    input {
+        margin-top: 20px;
+        width: 80vw;
+    }
+
+    span {
+        text-align: center;
+        font-weight: lighter;
+        font-style: italic;
+    }
+
+    button {
+        width: 150px;
+        height: 50px;
+        margin-top: 20px;
+        background-color: $primary;
+        color: $white;
+        border-radius: 7px;
+        border: none;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+}

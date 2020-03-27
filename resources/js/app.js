@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -31,6 +30,17 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
-=======
+
 require('./bootstrap');
->>>>>>> d0562c1ee71b511d31296e30ae29ef37f3ba08a3
+
+//Webshim
+
+require('webshim/js-webshim/minified/polyfiller');
+
+//Inline picker for date of birth in register
+
+webshim.setOptions("forms-ext", {
+    "date": {
+        "inlinePicker": true
+    }
+});
