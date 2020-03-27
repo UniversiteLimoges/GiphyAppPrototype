@@ -298,9 +298,14 @@ Routes
 ```
 
 
-## User Workflow 
+## IP-Visitor
+[Laravel GeoIP](https://lyften.com/projects/laravel-geoip/doc/)
+[GitHub](https://github.com/Torann)
 
-Login :
+* `$ composer require torann/geoip`
 
-* /home 
-* display menu profil
+* Add Provider & Alias in _config/app.php_
+
+* `$ php artisan vendor:publish --provider="Torann\GeoIP\GeoIPServiceProvider" --tag=config` Compile _config/geoip.php_ file
+
+ 

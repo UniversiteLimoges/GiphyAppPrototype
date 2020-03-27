@@ -9,6 +9,7 @@
             <ul>
                 <li>{{ $current_user->name }}</li>
                 <li>{{ $current_user->email }}</li>
+                <li>{{ $current_user->visitor_ip }}</li>
             </ul>
         </div>
     </div>

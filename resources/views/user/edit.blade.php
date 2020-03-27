@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-	 <div class="row justify-content-center">
 	<h1>Welcome to Edit page {{ $current_user->name }}</h1>
 
 	<form method="POST" action="{{ route('user.update', ['user' => $current_user]) }}">
@@ -20,5 +19,11 @@
 	  <button type="submit" class="btn btn-primary"> Go </button>
 	</form>
 </div>
-</div>
+
+<pre>
+@php
+	echo var_dump($location);
+@endphp
+</pre>
+
 @endsection

@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+//use App\Http\Middleware\GetIp;
 
 class UserController extends Controller
 {
+
+
+    function __construct()
+    {
+        $this->middleware('getIp');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -61,8 +69,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $location = geoip()->getLocation('37.167.181.124');
+
         return view('user.edit', [
             'current_user' => $user,
+            'location' => $location,
         ]);
     }
 
