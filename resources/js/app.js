@@ -31,6 +31,7 @@ const app = new Vue({
     el: '#app',
 });
 
+require('./lib/bootstrap-datepicker');
 require('./bootstrap');
 
 //Tag System
@@ -44,5 +45,8 @@ let tagify = new Tagify(input , {
 });
 
 //Date Picker
-$('#datepicker').datepicker({
+$(document).ready(function () {
+    $('#datepicker').datepicker({
+    format: "dd/mm/yyyy"
+});
 });
