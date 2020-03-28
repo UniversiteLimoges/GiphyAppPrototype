@@ -33,14 +33,16 @@ const app = new Vue({
 
 require('./bootstrap');
 
-//Webshim
+//Tag System
+require('./lib/tagify');
 
-require('webshim/js-webshim/minified/polyfiller');
+import Tagify from '@yaireo/tagify';
 
-//Inline picker for date of birth in register
+let input = document.querySelector('.tag');
+let tagify = new Tagify(input , {
+    blacklist: ["nonono"]
+});
 
-webshim.setOptions("forms-ext", {
-    "date": {
-        "inlinePicker": true
-    }
+//Date Picker
+$('#datepicker').datepicker({
 });

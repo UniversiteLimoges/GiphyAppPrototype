@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@yaireo/tagify": "^3.6.3",
+        "tail.datetime": "^0.4.13",
         "webshim": "^1.16.0"
     }
 }

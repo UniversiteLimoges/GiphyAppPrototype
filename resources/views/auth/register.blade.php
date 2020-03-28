@@ -24,7 +24,8 @@
             </span>
         @enderror
         <input id="password-confirm" type="password" class="" name="password_confirmation" required autocomplete="new-password" placeholder="Confirmer votre mot de passe">
-        <input min="1919-01-01" max="2002-12-30" placeholder="Date de naissance" type="date"  />
+        <input class="form-control" id="datepicker" type="text">
+        <input class="tag" type="text" value="cinéma, randonnée, petit poney">
         <button type="submit" class="">
             {{ __("S'inscrire") }}
         </button>

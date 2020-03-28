@@ -9,6 +9,19 @@ form {
     input {
         margin-top: 20px;
         width: 80vw;
+        height: 45px;
+        border: 1px solid rgba(0,0,0,0.2);
+        border-radius: 5px;
+        -webkit-appearance: initial;
+    }
+
+    tags {
+        margin-top: 20px;
+        width: 80vw;
+        height: auto;
+        border: 1px solid rgba(0,0,0,0.2);
+        border-radius: 5px;
+        -webkit-appearance: initial;
     }
 
     span {
@@ -27,4 +40,6 @@ form {
         border: none;
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
     }
+
+
 }
