@@ -14,11 +14,10 @@ class UsersAddTraitsTagsGeoloc extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->ipAddress('visitor_ip')->nullable();
-            $table->float('latitude', 8, 3)->nullable();
-            $table->float('longitude', 8, 3)->nullable();
-            $table->integer('accuracy')->nullable();
-            $table->json('profile')->nullable();
+            // $table->float('latitude', 8, 3)->nullable();
+            // $table->float('longitude', 8, 3)->nullable();
+            // $table->integer('accuracy')->nullable();
+            // $table->json('profile')->nullable();
         });
     }
 

@@ -18,8 +18,8 @@ class GetIp
     {
         $current_user = Auth::user();
 
+        // Add ip to the user
         $current_user->visitor_ip = $_SERVER['REMOTE_ADDR'];
-
         $current_user->save();
 
         return $next($request);

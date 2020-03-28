@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container">
+    <h1 class="text-center"> Welcome {{ $current_user->name }}</h1>
     <div class="row justify-content-center">
-        <h1> Welcome {{ $current_user->name }}</h1>
+        <br>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
