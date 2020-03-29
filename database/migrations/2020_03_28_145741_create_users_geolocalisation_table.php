@@ -14,7 +14,9 @@ class CreateUsersGeolocalisationTable extends Migration
     public function up()
     {
         Schema::create('users_geolocalisation', function (Blueprint $table) {
-            $table->bigIncrements('user_id');
+            $table->integer('user_id');
+            // $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('ip')->nullable();
             $table->string('iso_code')->nullable();
             $table->string('country')->nullable();
@@ -28,6 +30,11 @@ class CreateUsersGeolocalisationTable extends Migration
             $table->string('continent')->nullable();
             $table->string('currency')->nullable();
         });
+
+          // Insert some production data
+        // DB::table('users')->insert(
+        //     ['name' => 'John Public', 'email' => 'john@example.com']
+        // );
     }
 
     /**

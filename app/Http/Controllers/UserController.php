@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\userGeolocalisation;
+use App\UsersGeolocalisation;
 
 use Illuminate\Http\Request;
 //use App\Http\Middleware\GetIp;
@@ -72,9 +72,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         // dd($user);
-        $location = geoip()->getLocation('37.167.181.124');
-        // $location = geoip()->getLocation('77.141.147.73'); // tony
+        // $location = geoip()->getLocation('37.167.181.124');
+        $location = geoip()->getLocation('77.141.147.73'); // tony
 
+        // dd(geoip($ip = null));
         return view('user.edit', [
             'current_user' => $user,
             'location' => $location
@@ -94,29 +95,52 @@ class UserController extends Controller
         //https://laravel.com/docs/5.8/eloquent
         // $users = DB::table('users');
         // dd($users->where('user_id', 2)->first());
+        // $userGeolocalisation = userGeolocalisation::find($user->id); // facade
+        
         
         // Call from the model thanks to the relation
-        $userGeolocalisation = User::find($user->id)->geolocalisation;
-        // $userGeolocalisation = userGeolocalisation::find($user->id); // facade
+        
+        $userGeolocalisation  = User::find($user->id)->geolocalisation;
+        
+        // If no user corresponding to the selected user, we create it
+        if (is_null($userGeolocalisation )) {
+            $userGeolocalisation = new UsersGeolocalisation;
+            $userGeolocalisation->user_id = $user->id;
+            $userGeolocalisation->ip = $request->input('ip');
+            $userGeolocalisation->country = $request->input('country');
+            $userGeolocalisation->city = $request->input('city');
+            $userGeolocalisation->state = $request->input('state');
+            $userGeolocalisation->state_name = $request->input('state_name');
+            $userGeolocalisation->postal_code = $request->input('postal_code');
+            $userGeolocalisation->lat = $request->input('lat');
+            $userGeolocalisation->lon = $request->input('lon');
+            $userGeolocalisation->timezone = $request->input('timezone');
+            $userGeolocalisation->continent = $request->input('continent');
+            $userGeolocalisation->currency = $request->input('currency');
+            $userGeolocalisation->save();    
+        } else {
+            // update it
+            $userGeolocalisation->user_id = $user->id;
+            $userGeolocalisation->ip = $request->input('ip');
+            $userGeolocalisation->country = $request->input('country');
+            $userGeolocalisation->city = $request->input('city');
+            $userGeolocalisation->state = $request->input('state');
+            $userGeolocalisation->state_name = $request->input('state_name');
+            $userGeolocalisation->postal_code = $request->input('postal_code');
+            $userGeolocalisation->lat = $request->input('lat');
+            $userGeolocalisation->lon = $request->input('lon');
+            $userGeolocalisation->timezone = $request->input('timezone');
+            $userGeolocalisation->continent = $request->input('continent');
+            $userGeolocalisation->currency = $request->input('currency');
+            $userGeolocalisation->save();    
+        }
 
-        $userGeolocalisation->ip = $request->input('ip');
-        $userGeolocalisation->country = $request->input('country');
-        $userGeolocalisation->city = $request->input('city');
-        $userGeolocalisation->state = $request->input('state');
-        $userGeolocalisation->state_name = $request->input('state_name');
-        $userGeolocalisation->postal_code = $request->input('postal_code');
-        $userGeolocalisation->lat = $request->input('lat');
-        $userGeolocalisation->lon = $request->input('lon');
-        $userGeolocalisation->timezone = $request->input('timezone');
-        $userGeolocalisation->continent = $request->input('continent');
-        $userGeolocalisation->currency = $request->input('currency');
-        $userGeolocalisation->save();
-
-        // $geolocalisation = userGeolocalisation::all();
+        // $geolocalisation = UsersGeolocalisation::all();
         // foreach ($geolocalisation as $geo) {
         //     // dd($geolocalisation);
         //     echo $geo->ip;
         // }
+        // dd($userGeolocalisation);
 
         // Modify the user and save it
         $user->email = $request->input('email');
@@ -124,7 +148,9 @@ class UserController extends Controller
         $user->save();
 
         // return redirect()->route('home')->with('success','User modified successfully');
-        return redirect()->route('user.index')->with('success','User modified successfully');
+        return redirect()->route('user.index',  [
+            'current_user' => $user
+        ])->with('success','User modified successfully');
     }
 
     /**

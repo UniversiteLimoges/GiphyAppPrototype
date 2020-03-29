@@ -41,6 +41,16 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+
+                    <!-- Auth -->
+                    @if (Auth::check())
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">test</a>
+                        </li>
+                    </ul>
+                    <!-- Admin  BUG -->
+                    @elseif (Auth::check() && Auth::user()->is_admin)
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">List of tags</a>
@@ -49,6 +59,7 @@
                             <a class="nav-link" href="#">List of users</a>
                         </li>
                     </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

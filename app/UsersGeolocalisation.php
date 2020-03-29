@@ -16,6 +16,6 @@ class UsersGeolocalisation extends Model
      * @var array
      */
     protected $fillable = [
-        'ip', 'iso_code', 'country', 'city', 'state', 'state_name', 'postal_code', 'lat', 'lon', 'timezone', 'continent', 'currency',
+        'user_id', 'ip', 'iso_code', 'country', 'city', 'state', 'state_name', 'postal_code', 'lat', 'lon', 'timezone', 'continent', 'currency',
     ];
 }
